@@ -3,19 +3,27 @@
 
 var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
-var app = new EmberAddon();
-
-// Use `app.import` to add additional libraries to the generated
-// output files.
-//
-// If you need to use different assets in different
-// environments, specify an object as the first parameter. That
-// object's keys should be the environment name and the values
-// should be the asset to use in that environment.
-//
-// If the library that you are including contains AMD or ES6
-// modules that you would like to import into your application
-// please specify an object with the list of modules as keys
-// along with the exports of each module as its value.
+var app = new EmberAddon({
+    fileCreator: [{
+        filename: '/utils/build.js',
+        content: 'export default { version: "0.0.0" }'
+    }, {
+        filename: '/utils/wrapped.js',
+        content: '{ version: "0.0.0" }',
+        wrap: true
+    }, {
+        filename: '/styles/_features.scss',
+        content: function() {
+            return '@if ($name == features-kitchen-sink) { @return true; }';
+        }
+    }, {
+        filename: '/data/functional.js',
+        content: function() {
+            var testData = [1, 2, 3];
+            return 'export default ' + JSON.stringify(testData) + ';';
+        },
+        wrap: true
+    }]
+});
 
 module.exports = app.toTree();
