@@ -1,3 +1,5 @@
+## ember-cli-file-creator [![Build Status][travis-badge]][travis-badge-url]  [![Build status][appveyor-badge]][appveyor-badge-url]
+
 # Ember-cli-file-creator
 
 Add a file into the ember app tree.
@@ -63,3 +65,8 @@ export default [1, 2, 3];
 - add support for styles, templates  & other
 
 For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+
+[travis-badge]: https://travis-ci.org/jschilli/ember-cli-file-creator.svg?branch=master
+[travis-badge-url]: https://travis-ci.org/jschilli/ember-cli-file-creator
+[appveyor-badge]: https://ci.appveyor.com/api/projects/status/c20rom3am78b232e/branch/master?svg=true
+[appveyor-badge-url]: https://ci.appveyor.com/project/jschilli/ember-cli-file-creator/branch/master
