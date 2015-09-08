@@ -45,6 +45,7 @@
     "configPath": "tests/dummy/config"
   },
   "dependencies": {
-    "broccoli-file-creator": "^0.1.0"
+    "broccoli-file-creator": "^0.1.0",
+    "broccoli-merge-trees": "^0.2.3"
   }
 }
