@@ -1,5 +1,6 @@
 /* jshint node: true */
 var writeFile = require('broccoli-file-creator');
+var mergeTrees = require('broccoli-merge-trees');
 
 var cachedTree;
 
@@ -11,7 +12,7 @@ module.exports = {
 
     treeForApp: function() {
         if (cachedTree === null) {
-            cachedTree = this.mergeTrees(this.options.map(createFile, this));
+            cachedTree = mergeTrees(this.options.map(createFile, this));
         }
         return cachedTree;
     },

@@ -40,10 +40,9 @@ describe('File creator', function() {
         projectPath = path.resolve(__dirname, '../..');
         project = setupProject(projectPath);
 
-        Constructor = Addon.extend(CreateAddon);
+        Constructor = Addon.extend(CreateAddon).extend({root: '../..'});
 
         addon = new Constructor();
-        addon.root = '../..';
 
         project.initializeAddons = function() {
             this.addons = [addon];
