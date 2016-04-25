@@ -7,6 +7,7 @@ var expect = require('chai').expect;
 var CreateAddon = require('../../index');
 var fs = require('fs');
 var Builder = require('broccoli').Builder;
+var mergeTrees = require('broccoli-merge-trees');
 
 
 
@@ -29,7 +30,7 @@ describe('File creator', function() {
 
     function testWithExpectations(app, expectations) {
         var addonResults = app.addonTreesFor('app');
-        var tree = addon.mergeTrees(addonResults);
+        var tree = mergeTrees(addonResults);
 
         var builder = new Builder(tree);
         return builder.build()
@@ -108,7 +109,7 @@ describe('File creator', function() {
             }]
         });
         var addonResults = emberApp.addonTreesFor('app');
-        var tree = addon.mergeTrees(addonResults);
+        var tree = mergeTrees(addonResults);
 
         var builder = new Builder(tree);
         return builder.build()
