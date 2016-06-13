@@ -1,6 +1,7 @@
 /* jshint node: true */
 var writeFile = require('broccoli-file-creator');
 var mergeTrees = require('broccoli-merge-trees');
+var concat = require('broccoli-concat');
 
 var cachedTree;
 
@@ -32,7 +33,7 @@ function contentFor(content) {
 function createFile(current) {
     var content = current.content;
     var tree = writeFile('test', contentFor(content));
-    var moduleFile = this.concatFiles(tree, {
+    var moduleFile = concat(tree, {
         inputFiles: ['test'],
         outputFile: current.filename
     });
