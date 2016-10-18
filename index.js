@@ -8,6 +8,7 @@ var cachedTree;
 module.exports = {
     name: 'ember-cli-file-creator',
     init: function() {
+        this._super.init && this._super.init.apply(this, arguments);
         cachedTree = null;
     },
 
