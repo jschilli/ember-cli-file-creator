@@ -3,7 +3,7 @@ var writeFile = require('broccoli-file-creator');
 var mergeTrees = require('broccoli-merge-trees');
 var concat = require('broccoli-concat');
 
-var cachedTree;
+var cachedTrees = {};
 
 module.exports = {
     name: 'ember-cli-file-creator',
@@ -11,15 +11,18 @@ module.exports = {
         if (this.hasRun) return;
         this.hasRun = true;
         this._super.init && this._super.init.apply(this, arguments);
-        cachedTree = null;
     },
 
-    treeForApp: function() {
-        if (cachedTree === null) {
-            cachedTree = mergeTrees(this.options.map(createFile, this));
+    treeFor: function (treeName) {
+        if (!cachedTrees[treeName]) {
+            const currentTreeOptions = this.options.filter(function (option) {
+                return option.tree === treeName || (!option.tree && treeName === 'app');
+            });
+            cachedTrees[treeName] = mergeTrees(currentTreeOptions.map(createFile, this));
         }
-        return cachedTree;
+        return cachedTrees[treeName];
     },
+
     included: function(app) {
         this._super.included(app);
         this.options = app.options.fileCreator || [];
