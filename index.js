@@ -3,14 +3,15 @@ var writeFile = require('broccoli-file-creator');
 var mergeTrees = require('broccoli-merge-trees');
 var concat = require('broccoli-concat');
 
-var cachedTrees = {};
+var cachedTrees;
 
 module.exports = {
     name: 'ember-cli-file-creator',
     init: function() {
-        if (this.hasRun) return;
+        if (this.hasRun) { return; }
         this.hasRun = true;
         this._super.init && this._super.init.apply(this, arguments);
+        cachedTrees = {};
     },
 
     treeFor: function (treeName) {
