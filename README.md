@@ -1,14 +1,12 @@
-## ember-cli-file-creator [![Build Status][travis-badge]][travis-badge-url]  [![Build status][appveyor-badge]][appveyor-badge-url]
-
-# Ember-cli-file-creator
+# ember-cli-file-creator [![Build Status][travis-badge]][travis-badge-url]  [![Build status][appveyor-badge]][appveyor-badge-url]
 
 Add a file into the ember app tree.
 
-This is useful for transforming arbitrary data into a consumable format
+This is useful for transforming arbitrary data into a consumable format.
+
 
 ## Usage
-
-* `npm install --save-dev ember-cli-file-creator`
+    npm install --save-dev ember-cli-file-creator
 
 ```
 var package = require('package');
@@ -17,7 +15,7 @@ EmberApp.init({
 	fileCreator: [
 		{
 			filename: '/service/build-details.js',
-			content: 'export default {' + package.version + '}'
+			content: 'export default {' + package.version + '}',
 		}
 	]
 });
@@ -28,8 +26,29 @@ export default {
 	BUILD_VERSION: '1.2.3'
 };
 ```
-### Functions
-You can also specify a function that will return the content
+
+
+## Available file options
+| Option     | Type                                     | Default value | Use                                   |
+|:-----------|:-----------------------------------------|:--------------|:--------------------------------------|
+| `filename` | String                                   | (required)    | Where to put the file within the tree |
+| `content`  | String or function that returns a string | (required)    | Content of the file                   |
+| `tree`     | String                                   | `"app"`       | Name of the tree to put the file into |
+
+
+## Available trees
+* `app`
+* `styles`
+* `templates`
+* `vendor`
+* `test-support`
+* `public`
+
+See [Ember CLI API docs](https://ember-cli.com/api/classes/Addon.html#method_treeFor) for details.
+
+
+## Passing a function as content
+You can specify a function that must return the content as a string.
 
 ```
 EmberApp.init({
