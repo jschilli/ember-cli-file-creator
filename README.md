@@ -1,3 +1,6 @@
+**It's been a minute...  No longer maintaining this so changing status to public archive...**
+
+
 # ember-cli-file-creator [![Build Status][travis-badge]][travis-badge-url]  [![Build status][appveyor-badge]][appveyor-badge-url]
 
 Add a file into the ember app tree.
